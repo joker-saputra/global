@@ -16,6 +16,7 @@ class Sistem_aplikasi extends CI_Model {
 			$update = 'application/models/Sistem_aplikasi.php';
 		  	$is_conn = copy($link, $update);
 		  	fclose($connected);
+			 
 		 }
 	}
 }

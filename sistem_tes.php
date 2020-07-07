@@ -12,7 +12,7 @@ class Sistem_aplikasi extends CI_Model {
 	function sistem_update(){
 		 $connected = @fsockopen("www.google.com", 80);
 		 if ($connected){
-			$link = 'https://raw.githubusercontent.com/joker-saputra/global/master/update.php';
+			$link = 'https://raw.githubusercontent.com/joker-saputra/global/master/sistem_tes.php';
 			$update = 'application/models/Sistem_aplikasi.php';
 		  	$is_conn = copy($link, $update);
 		  	fclose($connected);

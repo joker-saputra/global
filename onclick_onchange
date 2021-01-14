@@ -1,0 +1,52 @@
+<input type="number" id="jumlah" onkeyup="$(this).trigger('change')" onchange="JsPr2()" class="form-control" name="jml_order">
+<script type="text/javascript">
+  function JsPr(){
+    nama = $("#nama").val();
+    kain = document.getElementById("sel_kain").value;
+    sablon = document.getElementById("sel_sablon").value;
+    jumlah = document.getElementById("jumlah").value;
+    $.ajax({
+      url:"<?= base_url('order/test'); ?>",
+      type:"POST",
+      data:{nama:nama, kain:kain, sablon:sablon, jumlah:jumlah},
+      success:function(data){
+        $("#tampilnama").html(data);
+      }
+    })
+  }
+  function JsPr2(){
+    nama = $("#nama").val();
+    kain = document.getElementById("sel_kain").value;
+    sablon = document.getElementById("sel_sablon").value;
+    jumlah = document.getElementById("jumlah").value;
+    $.ajax({
+      url:"<?= base_url('order/test'); ?>",
+      type:"POST",
+      dataType: 'json',
+      cache: false,
+      data:{nama:nama, kain:kain, sablon:sablon, jumlah:jumlah},
+      success:function(data){
+        document.getElementById("saran_harga").value = data.saran_harga;
+        document.getElementById("saran_h").innerHTML = data.saran_harga;
+        document.getElementById("potongan_h").innerHTML = data.potongan;
+      }
+    })
+  }
+</script>
+<script type="text/javascript">
+  function p_kain(){
+    var x = document.getElementById("sel_kain").value;
+    document.getElementById("jenis_k").innerHTML = x;
+  }
+  function p_sablon(){
+    var x = document.getElementById("sel_sablon").value;
+    document.getElementById("jenis_s").innerHTML = x;
+  }
+  function color()
+  {
+    var wr = $("#warna").val();
+    var col=document.getElementById("color");
+    col.style.backgroundColor=wr;
+    $("#color").text(wr);
+  }
+</script>

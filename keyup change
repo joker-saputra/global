@@ -1,0 +1,35 @@
+
+    $('#jumlah').on('keyup change',function(){
+      var jml = $("#jumlah").val();
+      var v_kain = $("#sel_kain option:selected").val();
+      var v_sablon = $("#sel_sablon option:selected").val();
+      $("#i_jumlah").text(jml);
+      if (v_sablon !== null || v_sablon !== "") {
+        if (v_kain !== null || v_kain !== "") {
+          var total_hpp = $("#total_hpp").val();
+          saran = (+v_kain)+(+v_sablon)+(+total_hpp);
+          saran_fix = (+saran)+((+saran)*0.15);
+          nms_s = saran_fix.toString(),
+          sisa_s  = nms_s.length % 3,
+          rp_s  = nms_s.substr(0, sisa_s),
+          rb_s  = nms_s.substr(sisa_s).match(/\d{3}/g);
+          if (rb_s) {
+            separator_s = sisa_s ? '.' : '';
+            rp_s += separator_s + rb_s.join('.');
+          }
+          $("#saran_h").text('Rp '+rp_s);
+          $("#saran_harga").val('Rp '+rp_s);
+          ////////////////////
+          $("#s_jumlah").val(jml);
+          $("#s_saran_harga").val(saran_fix);
+          // CHANGE
+          /////////////////////////
+          $("#Hrga").text("Rp 0");
+          $("#t_dp").text("Rp 0");
+          $("#sisa_bayar").text("Rp 0");
+          // CHANGE INPUT
+          $("#harga_in").val("");
+          $("#dp_in").val("");
+        }
+      }
+    });
